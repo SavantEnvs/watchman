@@ -1,0 +1,6 @@
+# Mayhem target: serde_bser BSER roundtrip fuzzer (cargo-fuzz libFuzzer binary).
+project: savantenvs/watchman
+target: roundtrip
+cmds:
+  - cmd: /mayhem/roundtrip
+    libfuzzer: true
