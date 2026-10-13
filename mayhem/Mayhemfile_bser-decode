@@ -1,0 +1,12 @@
+# Mined target: watchman's BSER decoder (watchman/fuzz/BserDecode.cpp), built on the commit before
+# upstream's "limit bser parse depth" fix. The bug is a stack overflow from deeply nested
+# containers, which needs more input than Mayhem's default 8192-byte limit allows.
+project: savantenvs/watchman
+target: bser-decode-mined-17a06fe
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/bser-decode-mined-17a06fe/testsuite
+cmds:
+  - cmd: /mayhem/BserDecode
+    libfuzzer: true
+    max_length: 1048576
