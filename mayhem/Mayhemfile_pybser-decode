@@ -1,0 +1,11 @@
+# Mined target: pywatchman's C BSER decoder (watchman/python/pywatchman/bser.c) through
+# watchman/fuzz/PyBserDecode.cpp, built on the commit before upstream's "fix a bunch of buffer
+# overflows in pybser" fix.
+project: savantenvs/watchman
+target: pybser-decode-mined-7af7eca
+testsuite:
+  - https://$MAYHEM_DOMAIN/$MAYHEM_PROJECT/$MAYHEM_TARGET/testsuite.tar
+  - file://mayhem/pybser-decode-mined-7af7eca/testsuite
+cmds:
+  - cmd: /mayhem/PyBserDecode
+    libfuzzer: true
